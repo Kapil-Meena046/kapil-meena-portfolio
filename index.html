@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kapil Meena | Video Editor Portfolio</title>
+  <meta name="description" content="Portfolio of Kapil Meena, video editor from Chittorgarh, Rajasthan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+
+<!-- ========== START PAGE (film countdown) ========== -->
+<div id="splash" aria-hidden="true">
+  <div class="leader">
+    <div class="sweep"></div>
+    <span id="count">3</span>
+  </div>
+  <p class="splash-title"><span>Kapil Meena</span><span>Video Editor</span></p>
+  <button id="skip" type="button">Skip intro</button>
+</div>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <a class="logo" href="#top">Kapil Meena</a>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#editing">Video Editing</a>
+    <a href="#videography">Videography</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero" id="top">
+  <video autoplay muted loop playsinline src="assets/hero.mp4"></video>
+  <div class="hero-text">
+    <h1 aria-label="Portfolio" id="hero-title">Portfolio</h1>
+    <p>Reels, YouTube edits and travel films. <span id="typed"></span></p>
+    <a class="btn" href="#editing">Watch my work</a>
+  </div>
+</header>
+
+<!-- ========== ABOUT ========== -->
+<section class="section" id="about">
+  <div class="about reveal">
+    <div>
+      <h2>Hey, I’m Kapil</h2>
+      <p class="lead">I’m a fresher who has been editing videos voluntarily. I love creative work and spend most of my time learning new skills and improving my craft. I’m looking for opportunities to gain professional experience, get exposure, and grow in the creative industry. I don’t want to fall behind, so I’m always eager to learn and adapt.</p>
+      <p>Languages: Hindi, English</p>
+
+      <div class="two">
+        <div>
+          <h3>Education</h3>
+          <p>B.Tech + M.Tech<br>Electronics &amp; Communication<br>NIT Hamirpur<br>Graduated August 2026</p>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul class="tools">
+            <li>CapCut</li><li>VN Editor</li><li>DaVinci Resolve</li><li>Canva</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <h3>Experience</h3>
+        <p><strong>2023–2026</strong> Social Media Coordinator, Mission Literacy, NIT Hamirpur</p>
+        <ul>
+          <li>Created thumbnails for YouTube, designed newsletters, invitations, and brochures.</li>
+          <li>Edited videos to be posted on Instagram Reels.</li>
+          <li>Edited videos for YouTube and managed social media content.</li>
+        </ul>
+      </div>
+    </div>
+    <img class="portrait" src="assets/portrait.jpg" alt="Kapil Meena standing on a lit bridge at night">
+  </div>
+</section>
+
+<!-- ========== WORK (cards are made by script.js from the list at the top of that file) ========== -->
+<section class="section alt" id="editing">
+  <h2 class="reveal">Video Editing</h2>
+  <p class="sub reveal">Tap a video to play it.</p>
+  <div class="grid" id="grid-editing"></div>
+</section>
+
+<section class="section" id="videography">
+  <h2 class="reveal">Video Graphy</h2>
+  <p class="sub reveal">Shot on location, including work for Mission Literacy.</p>
+  <div class="grid" id="grid-videography"></div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="section contact" id="contact">
+  <h2 class="big reveal">Work with me</h2>
+  <p class="reveal">Open to freelance and full-time editing roles.</p>
+  <p class="reveal">
+    <a class="btn solid" href="mailto:Kapilmeena2203@gmail.com">Kapilmeena2203@gmail.com</a>
+    <a class="btn" href="tel:+919521382238">+91 95213 82238</a>
+  </p>
+</section>
+<footer>© 2026 Kapil Meena · Chittorgarh, Rajasthan</footer>
+
+<!-- ========== VIDEO POP-UP ========== -->
+<div id="player" hidden>
+  <button id="close" type="button" aria-label="Close video">×</button>
+  <div id="player-box"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
