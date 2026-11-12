@@ -7,19 +7,21 @@
   <meta name="description" content="Portfolio of Kapil Meena, video editor from Chittorgarh, Rajasthan.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="loading">
+<body>
 
-<!-- ========== START PAGE (film countdown) ========== -->
-<div id="splash" aria-hidden="true">
-  <div class="leader">
-    <div class="sweep"></div>
-    <span id="count">3</span>
+<!-- ========== INTERACTIVE RETRO GAME INTRO ========== -->
+<div class="game-intro" id="game-intro" role="dialog" aria-modal="true" aria-label="Interactive portfolio game intro">
+  <canvas class="runner-canvas" id="runner-canvas" aria-label="Side-scrolling pixel runner game with three numbered spike obstacles"></canvas>
+  <div class="game-hud"><div class="game-brand"><span>KAPIL MEENA</span><small>VIDEO EDITOR</small></div>
+    <p class="game-instructions">Tap JUMP as each spike gets close</p>
+    <div class="game-message" id="game-message" aria-live="polite"></div>
   </div>
-  <p class="splash-title"><span>Kapil Meena</span><span>Video Editor</span></p>
-  <button id="skip" type="button">Skip intro</button>
+  <p class="sr-only" id="game-status" aria-live="polite">The runner game is starting.</p>
+  <button class="game-jump" id="game-jump" type="button">JUMP <span>↑</span></button>
+  <button class="game-skip" id="game-skip" type="button">Skip intro</button>
 </div>
 
 <!-- ========== NAV ========== -->
@@ -29,29 +31,70 @@
     <a href="#about">About</a>
     <a href="#editing">Video Editing</a>
     <a href="#videography">Videography</a>
+        <a href="#animation">Animation</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- ========== HERO ========== -->
 <header class="hero" id="top">
-  <video autoplay muted loop playsinline src="assets/hero.mp4"></video>
+  <div class="gooey-bg" aria-hidden="true">
+    <div class="goo goo-one"></div>
+    <div class="goo goo-two"></div>
+    <div class="goo goo-three"></div>
+    <div class="goo goo-four"></div>
+    <div class="goo goo-five"></div>
+  </div>
   <div class="hero-text">
     <h1 aria-label="Portfolio" id="hero-title">Portfolio</h1>
     <p>Reels, YouTube edits and travel films. <span id="typed"></span></p>
-    <a class="btn" href="#editing">Watch my work</a>
+    <button class="btn" id="open-work" type="button">Watch my work</button>
   </div>
 </header>
 
+<!-- ========== WORK CATEGORY CAROUSEL ========== -->
+<div class="work-modal" id="work-modal" hidden>
+  <div class="work-dialog" role="dialog" aria-modal="true" aria-labelledby="work-title">
+    <button class="work-close" id="work-close" type="button" aria-label="Close work categories">×</button>
+    <p class="work-kicker">SELECT A CATEGORY</p>
+    <h2 id="work-title">Explore my work</h2>
+    <p class="work-hint">Scroll or drag sideways to explore</p>
+    <div class="work-carousel" id="work-carousel" tabindex="0" aria-label="Work categories; scroll horizontally">
+      <article class="work-panel editing-panel">
+        <span class="panel-number">01 / 03</span><span class="panel-icon" aria-hidden="true">✂</span>
+        <h3>Video Editing</h3><p>Reels, YouTube edits, and short films.</p>
+        <a class="btn panel-link" href="#editing">Explore editing</a>
+      </article>
+      <article class="work-panel video-panel">
+        <span class="panel-number">02 / 03</span><span class="panel-icon" aria-hidden="true">◉</span>
+        <p class="panel-eyebrow">ON LOCATION · IN MOTION</p>
+        <h3>Videography</h3><p>Travel films and real moments, shaped into stories worth revisiting.</p>
+        <a class="btn panel-link" href="#videography">Explore videography</a>
+      </article>
+      <article class="work-panel animation-panel">
+        <span class="panel-number">03 / 03</span><span class="panel-icon" aria-hidden="true">✳</span>
+        <h3>Animation</h3><p>Motion graphics and animation projects.</p>
+        <a class="btn panel-link" href="#animation">Explore animation</a>
+      </article>
+    </div>
+    <div class="carousel-controls">
+      <button type="button" id="work-prev" aria-label="Scroll categories left">←</button>
+      <span>Drag · Scroll · Use arrows</span>
+      <button type="button" id="work-next" aria-label="Scroll categories right">→</button>
+    </div>
+  </div>
+</div>
+
 <!-- ========== ABOUT ========== -->
 <section class="section" id="about">
-  <div class="about reveal">
-    <div>
-      <h2>Hey, I’m Kapil</h2>
-      <p class="lead">I’m a fresher who has been editing videos voluntarily. I love creative work and spend most of my time learning new skills and improving my craft. I’m looking for opportunities to gain professional experience, get exposure, and grow in the creative industry. I don’t want to fall behind, so I’m always eager to learn and adapt.</p>
-      <p>Languages: Hindi, English</p>
+  <div class="about">
+    <div class="about-copy reveal">
+      <p class="about-kicker">ABOUT <span>01 / CREATIVE PROFILE</span></p>
+      <h2>Stories, shaped<br>with intention.</h2>
+      <p class="lead">I’m Kapil, a video editor who enjoys turning raw footage into clear, engaging stories. From social content to robotics tutorials, I bring a thoughtful eye to pacing, visuals, and the details that keep people watching.</p>
+      <p class="about-languages"><span>LANGUAGES</span> Hindi <i></i> English</p>
 
-      <div class="two">
+      <div class="two reveal">
         <div>
           <h3>Education</h3>
           <p>B.Tech + M.Tech<br>Electronics &amp; Communication<br>NIT Hamirpur<br>Graduated August 2026</p>
@@ -59,22 +102,32 @@
         <div>
           <h3>Tools</h3>
           <ul class="tools">
-            <li>CapCut</li><li>VN Editor</li><li>DaVinci Resolve</li><li>Canva</li>
+            <li><div class="tool-logo" tabindex="0" role="img" aria-label="CapCut"><svg class="tool-mark capcut-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M11 12h25L12 36h25M37 12 13 36M15 12l22 24"/></svg><span class="tool-name">CapCut</span></div></li>
+            <li><div class="tool-logo" tabindex="0" role="img" aria-label="VN Editor"><span class="tool-mark vn-mark" aria-hidden="true">VN</span><span class="tool-name">VN Editor</span></div></li>
+            <li><div class="tool-logo" tabindex="0" role="img" aria-label="DaVinci Resolve"><svg class="tool-mark davinci-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="m24 6 10 16H14L24 6Z"/><path d="m9 16 15 7-5 18L9 16Z"/><path d="m39 16-5 25-10-18 15-7Z"/></svg><span class="tool-name">DaVinci Resolve</span></div></li>
+            <li><div class="tool-logo" tabindex="0" role="img" aria-label="Canva"><span class="tool-mark canva-mark" aria-hidden="true">C</span><span class="tool-name">Canva</span></div></li>
           </ul>
         </div>
       </div>
 
-      <div class="exp">
-        <h3>Experience</h3>
-        <p><strong>2023–2026</strong> Social Media Coordinator, Mission Literacy, NIT Hamirpur</p>
-        <ul>
-          <li>Created thumbnails for YouTube, designed newsletters, invitations, and brochures.</li>
-          <li>Edited videos to be posted on Instagram Reels.</li>
-          <li>Edited videos for YouTube and managed social media content.</li>
-        </ul>
+      <div class="exp reveal">
+        <div class="exp-heading"><h3>Selected experience</h3><span>VIDEO · CONTENT · DESIGN</span></div>
+        <article class="exp-item exp-current">
+          <div class="exp-meta"><strong>Current</strong><span>Video Editing</span></div>
+          <h4>RoboChamp</h4>
+          <p>Editing tutorial videos that make robotics easier to follow, with clear pacing and an engaging visual flow.</p>
+        </article>
+        <article class="exp-item">
+          <div class="exp-meta"><strong>2023–2026</strong><span>NIT Hamirpur</span></div>
+          <h4>Social Media Coordinator <span>· Mission Literacy</span></h4>
+          <p>Edited YouTube and Instagram videos, created thumbnails, and designed newsletters, invitations, and brochures.</p>
+        </article>
       </div>
     </div>
-    <img class="portrait" src="assets/portrait.jpg" alt="Kapil Meena standing on a lit bridge at night">
+    <div class="portrait-frame reveal">
+      <img class="portrait" src="assets/portrait.jpg" alt="Kapil Meena standing on a lit bridge at night">
+      <canvas class="portrait-runner" id="portrait-runner" aria-hidden="true"></canvas>
+    </div>
   </div>
 </section>
 
@@ -91,12 +144,27 @@
   <div class="grid" id="grid-videography"></div>
 </section>
 
+<!-- ========== ANIMATION ========== -->
+<section class="section alt" id="animation">
+  <h2 class="reveal">Animation</h2>
+  <p class="sub reveal">Animation work and motion graphics.</p>
+  <div class="grid" id="grid-animation"></div>
+</section>
+
 <!-- ========== CONTACT ========== -->
 <section class="section contact" id="contact">
+  <div class="gooey-bg contact-gooey" aria-hidden="true">
+    <div class="goo goo-one"></div>
+    <div class="goo goo-two"></div>
+    <div class="goo goo-three"></div>
+    <div class="goo goo-four"></div>
+    <div class="goo goo-five"></div>
+  </div>
   <h2 class="big reveal">Work with me</h2>
+  <p class="contact-typed-line" aria-live="polite"><span id="contact-typed"></span></p>
   <p class="reveal">Open to freelance and full-time editing roles.</p>
   <p class="reveal">
-    <a class="btn solid" href="mailto:Kapilmeena2203@gmail.com">Kapilmeena2203@gmail.com</a>
+    <a class="btn solid" href="https://mail.google.com/mail/?view=cm&amp;to=Kapilmeena2203@gmail.com" target="_blank" rel="noopener">Kapilmeena2203@gmail.com</a>
     <a class="btn" href="tel:+919521382238">+91 95213 82238</a>
   </p>
 </section>
